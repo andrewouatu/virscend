@@ -300,6 +300,10 @@ class WPLMS_Register{
           wp_deregister_style( 'font-awesome');
 
           wp_enqueue_style('wplms-style', VIBE_URL.'/assets/css/style.min.css',array(),WPLMS_VERSION);
+          
+          // new style css changes
+          wp_enqueue_style('virscend-style', VIBE_URL.'/assets/css/newstyle.css', array(), WPLMS_VERSION);
+
           $theme_skin = vibe_get_customizer('theme_skin');
           if(!empty($theme_skin)){
             wp_enqueue_style($theme_skin, VIBE_URL.'/assets/css/'.$theme_skin.'.min.css',array(),WPLMS_VERSION);  
