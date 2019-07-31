@@ -34,22 +34,27 @@ wp_head();
         <?php
             $fix=vibe_get_option('header_fix');
         ?>
+        
+        <!-- HEADER BEGINS HERE -->
         <header class="sleek transparent <?php if(isset($fix) && $fix){echo 'fix';} ?>">
-            <div class="<?php echo vibe_get_container(); ?>">
-                <div id="searchdiv">
-                    <form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-                        <div><label class="screen-reader-text" for="s">Search for:</label>
-                            <input type="text" value="<?php the_search_query(); ?>" name="s" id="s" placeholder="<?php _e('Hit enter to search...','vibe'); ?>" />
-                            <?php 
-                                $course_search=vibe_get_option('course_search');
-                                if(isset($course_search) && $course_search)
-                                    echo '<input type="hidden" value="course" name="post_type" />';
-                            ?>
-                            <input type="submit" id="searchsubmit" value="Search" />
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
+
+        <div class="<?php echo vibe_get_container(); ?>">
+            <div id="searchdiv">
+                <form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+                    <div><label class="screen-reader-text" for="s">Search for:</label>
+                        <input type="text" value="<?php the_search_query(); ?>" name="s" id="s" placeholder="<?php _e('Hit enter to search...','vibe'); ?>" />
+                        <?php 
+                            $course_search=vibe_get_option('course_search');
+                            if(isset($course_search) && $course_search)
+                                echo '<input type="hidden" value="course" name="post_type" />';
+                        ?>
+                        <input type="submit" id="searchsubmit" value="Search" />
+                    </div>
+                </form>
+            </div>
+        
+            <div class="row row-color">
+                    <!-- LOGO -->
                     <div class="col-md-9 col-sm-6 col-xs-12">
                         <?php
 
@@ -61,29 +66,48 @@ wp_head();
                         ?>
                         
                             <a href="<?php echo vibe_site_url('','logo'); ?>"><img src="<?php  echo apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header'); ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
-                        
                     </div>
+
+                    <!-- NAV MENU -->
+                    <div class="col-xs-12">
+                        <?php
+                            if(is_home()){
+                                echo '</h1>';
+                            }else{
+                                echo '</h2>';
+                            }
+
+                            $args = apply_filters('wplms-main-menu',array(
+                                'theme_location'  => 'main-menu',
+                                'container'       => 'nav',
+                                'menu_class'      => 'menu',
+                                'walker'          => new vibe_walker,
+                                'fallback_cb'     => 'vibe_set_menu'
+                            ));
+                            wp_nav_menu( $args ); 
+                        ?>
+                    </div>
+
+                    <!-- SEARCH AND LOGIN -->
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <button class="apply-btn"><a href="/apply-for-vu">Apply Now</a></button>
-                        <div id="searchicon"><i class="icon-search-2"></i></div>
                         <ul class="topmenu">
-                            <li><a href="https://virscend.moodle.school/login/index.php" target="_blank">Login</a></li>
-                            <!--<li><a href="http://virscend.com/shopping-cart">School Bag</a></li>-->
+                            <li>
+                                <a href="https://virscend.moodle.school/login/index.php" target="_blank">Login</a>
+                            </li>
+                            <div id="searchicon"><i class="icon-search-2"></i></div>
                         </ul>
-                        <button class="apply-btn" style="margin-top: 4px;"><a href="/scholarships-financial-aid-offered-by-virscend-university">Scholarships</a></button>
-                        <div class="social-icon">
-                            <div class="icon"><a href="https://www.facebook.com/virscend/" target="_blank"><i class="fa fa-facebook-square"></i></a></div>
-                            <div class="icon"><a href="#"><i class="fa fa-twitter-square"></i></a></div>
-                            <div class="icon"><a href="#"><i class="fa fa-linkedin-square"></i></a></div>
-                        </div>
-                        <ul class="cart topmenu" style="margin-top: -101px; margin-right: 183px;">
-                        	<li><a href="https://virscend.com/pay-online/">Pay</a></li>
-                        </ul>
+                    
+                    <!-- SOCIAL MEDIA THAT WILL BE MOVED TO FOOTER -->
+                    <!-- <div class="social-icon">
+                        <div class="icon"><a href="https://www.facebook.com/virscend/" target="_blank"><i class="fa fa-facebook-square"></i></a></div>
+                        <div class="icon"><a href="#"><i class="fa fa-twitter-square"></i></a></div>
+                        <div class="icon"><a href="#"><i class="fa fa-linkedin-square"></i></a></div>
+                    </div> -->
 
                         
                         <?php /*
                             $show_cart = apply_filters('wplms_header_show_cart',1);
-                            if ( function_exists('bp_loggedin_user_link') && is_user_logged_in() ) :
+                            if ( function_exists('bp_loggedin_user_link') && is_user_logged_in() ) :    
                                 ?>
                                 <ul class="topmenu">
                                     <li><a href="<?php bp_loggedin_user_link(); ?>" class="smallimg vbplogin"><?php $n=vbp_current_user_notification_count(); echo ((isset($n) && $n)?'<em></em>':''); bp_loggedin_user_avatar( 'type=full' ); ?><span><?php bp_loggedin_user_fullname(); ?></span></a></li>
@@ -123,34 +147,16 @@ wp_head();
                             }
                         ?>
                         <div id="vibe_bp_login" class="<?php echo $style; ?>">
-                        <?php
-                            vibe_include_template("login/$style.php");
-                        ?>
-                       </div>
+                            <?php
+                                vibe_include_template("login/$style.php");
+                            ?>
+                        </div>
                     </div>
-                    <a id="trigger">
-                        <span class="lines"></span>
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <?php
-                            if(is_home()){
-                                echo '</h1>';
-                            }else{
-                                echo '</h2>';
-                            }
-
-                            $args = apply_filters('wplms-main-menu',array(
-                                 'theme_location'  => 'main-menu',
-                                 'container'       => 'nav',
-                                 'menu_class'      => 'menu',
-                                 'walker'          => new vibe_walker,
-                                 'fallback_cb'     => 'vibe_set_menu'
-                             ));
-                            wp_nav_menu( $args ); 
-                        ?>
-                    </div>
-                </div>
+                <a id="trigger">
+                    <span class="lines"></span>
+                </a>
             </div>
+        </div>
         </header>
+        <!-- HEADER ENDS HERE -->
+

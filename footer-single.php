@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <?php 
                             if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('topfootersidebar') ) : ?>
                 <?php endif; ?>
+                
             </div>
         </div>
     </div> 

@@ -5,9 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="footertop">
-                <?php 
-                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('topfootersidebar') ) : ?>
-                <?php endif; ?>
+             
             </div>
         </div>
         <div class="row">

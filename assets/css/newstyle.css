@@ -1,3 +1,16 @@
-#logo{
-    background-color: red;
+/* CSS CHANGES MADE TO VIRSCEND UNIVERSITY SITE */
+
+/* CSS HEADER CHANGES BEGIN HERE */
+
+/* .row-color{
+    background-color: #0b2d51;
+} */
+
+/* .menu-color{
+    background-color: lightblue;
+} */
+
+#global .row{
+    padding-left: 2%;
+    padding-right: 2%;
 }
