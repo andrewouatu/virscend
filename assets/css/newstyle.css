@@ -6,11 +6,37 @@
     background-color: #0b2d51;
 } */
 
-/* .menu-color{
-    background-color: lightblue;
-} */
-
 #global .row{
     padding-left: 2%;
     padding-right: 2%;
+}
+
+a, a.button  {
+    cursor: pointer;
+}
+
+.container{
+    margin: 0;
+    width: 100%;
+}
+
+#global #header_logo{
+    height: 55px;
+}
+
+#headertop .socialicons, .topmenu {
+    float: left;
+}
+
+.sleek nav>.menu>li>a {
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+#global .menu-main-menu-container{
+    padding-top: 0.5rem;
+}
+
+#global .topmenu{
+    padding-top: 0.5rem;
 }
