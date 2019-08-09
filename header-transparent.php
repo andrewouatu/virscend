@@ -55,8 +55,7 @@ wp_head();
         
             <div class="row row-color">
                     <!-- LOGO -->
-                    <!-- <div class="col-md-9 col-sm-6 col-xs-12"> -->
-                    <div class="col-md-3">
+                    <div class="col-lg-3">
                         <?php
 
                             if(is_home()){
@@ -70,8 +69,7 @@ wp_head();
                     </div>
 
                     <!-- NAV MENU -->
-                    <!-- <div class="col-xs-12"> -->
-                    <div class="col-md-7">
+                    <div class="col-lg-7">
                         <?php
                             if(is_home()){
                                 echo '</h1>';
@@ -91,14 +89,13 @@ wp_head();
                     </div>
 
                     <!-- SEARCH AND LOGIN -->
-                    <!-- <div class="col-md-3 col-sm-6 col-xs-12"> -->
-                    <div class="col-md-2">
+                    <div class="col-lg-2">
                         <ul class="topmenu">
                             <li>
-                                <a href="https://virscend.moodle.school/login/index.php" target="_blank"><i class="fas fa-user fa-lg"></i></a>
+                                <a href="https://virscend.moodle.school/login/index.php" target="_blank"><i class="fas fa-user fa-lg"></i>LOG IN</a>
                             </li>
                             <li>
-                                <div id="searchicon"><i class="fas fa-search fa-lg"></i></div>
+                                <a id="searchicon"><i class="fas fa-search fa-lg"></i>SEARCH</a>
                             </li>
                         </ul>
                     
